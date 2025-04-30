@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>کوئرا لیست</title>
+    <link rel="stylesheet" href="./styles/main.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -27,11 +28,15 @@
     <header
       class="shadow-soft-black h-12 mt-4 mx-4 px-4 py-3 flex justify-center items-center relative rounded-lg shadow-sm"
     >
-      <img
-        src="./assets/images/mobile/light/menu.svg"
-        alt="menu"
-        class="w-6 h-6 cursor-pointer absolute right-4"
-      />
+    <!-- hamburger-menu -->
+    <img
+    src="./assets/images/mobile/light/menu.svg"
+    alt="menu"
+    class="w-6 h-6 cursor-pointer absolute right-4"
+    id="hamburger"
+    />
+    <section id="hamburger-menu" class="sm:hidden fixed right-[-300px] h-screen transition duration-500 ease-in-out">
+    </section>
       <h1
         class="text-base leading-[100%] tracking-normal font-bold text-center text-[#242424]"
       >
@@ -62,7 +67,7 @@
     <div class="h-px bg-[#F5F6F8] mx-4 my-4"></div>
     <br />
     <!-- Today Tasks -->
-    <div class="px-4">
+    <section class="px-4">
       <div class="mb-2 font-bold text-base leading-[100%] text-[#242424]">
         تسک‌های امروز
       </div>
@@ -197,7 +202,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Completed Tasks -->
     <section class="px-4">
@@ -235,5 +240,6 @@
         />
       </div> 
     </section>
+    <script type="module" src="./scripts/app.js"></script>
   </body>
 </html>
