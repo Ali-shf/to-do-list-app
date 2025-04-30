@@ -5,11 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>کوئرا لیست</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    boxShadow: {
+                        'soft-black': '0 0 58.5px 0 #0000000F'
+                    },
+                    colors: {
+                        "vivid-orange-red": "#FF5F37",
+                        "sunset-yellow": "#FFAF37",
+                        "sea-green": "#11A483"
+                    }
+                }
+            }
+        }
+    </script>
   </head>
-  <body class="bg-white font-sans">
-    <!-- Header section -->
+  <body class="font-sans">
+    <!-- !Header section -->
     <header
-      class="mt-4 mx-4 px-4 py-3 flex justify-center items-center relative rounded-lg shadow-sm"
+      class="shadow-soft-black h-12 mt-4 mx-4 px-4 py-3 flex justify-center items-center relative rounded-lg shadow-sm"
     >
       <img
         src="./assets/images/mobile/light/menu.svg"
@@ -25,7 +41,7 @@
     <br />
     <!-- Profile section -->
 
-    <div class="px-4 mt-4 flex items-center gap-3">
+    <section class="px-4 my-7 mr-4 flex items-center gap-3">
       <img
         src="./assets/images/mobile/light/profile.png"
         alt="Profile"
@@ -37,12 +53,12 @@
           >سلام، رویا</span
         >
         <span
-          class="text-[#7D7D7F] leading-[100%] tracking-normal font-semibold text-sm"
+          class="text-[#7D7D7F] leading-[100%] pt-3 tracking-normal font-semibold text-sm"
         >
           امروز، سه‌شنبه، ۵ بهمن ۱۴۰۲
         </span>
       </div>
-    </div>
+    </section>
     <div class="h-px bg-[#F5F6F8] mx-4 my-4"></div>
     <br />
     <!-- Today Tasks -->
@@ -54,7 +70,7 @@
 
       <!-- New Task Button -->
       <button
-        class="w-full bg-[#FFFFFF] border border-dashed border-[#CCCCCC] text-[#007BFF] py-4 pr-4 pl-64 rounded-[10px] font-semibold text-sm mb-4"
+        class="w-full whitespace-nowrap border border-dashed border-[#CCCCCC] text-[#007BFF] py-4 pr-4 pl-64 rounded-[10px] font-semibold text-sm mb-4"
       >
         + افزودن وظیفه جدید
       </button>
@@ -62,10 +78,10 @@
       <!-- Task Items -->
       <!-- High Priority Task -->
       <div
-        class="bg-[#FFFFFF] p-4 rounded-lg shadow-sm border-[#E9E9E9] mb-4 relative"
+        class=" p-4 rounded-lg border border-[#E9E9E9] mb-4 relative"
       >
         <div
-          class="absolute top-[15px] bottom-[15px] right-0 w-[4px] bg-[#FF5F37] rounded-l-full"
+          class="absolute top-[15px] bottom-[15px] right-0 w-[4px] bg-vivid-orange-red rounded-l-full"
         ></div>
 
         <div class="flex items-start justify-between">
@@ -102,11 +118,12 @@
       </div>
       <!-- Mid Priority Task -->
       <div
-        class="bg-[#FFFFFF] p-4 rounded-lg shadow-sm border-[#E9E9E9] mb-4 relative"
+        class="shadow-soft-black  p-4 rounded-lg shadow-sm border-[#E9E9E9] mb-4 relative"
       >
-        <div
-          class="absolute top-[15px] bottom-[15px] right-0 w-[4px] bg-[#FFAF37] rounded-l-full"
-        ></div>
+      <div
+            class="absolute top-[15px] bottom-[15px] right-0 w-[4px] bg-sunset-yellow rounded-l-full"
+      >
+      </div>
 
         <div class="flex items-start justify-between">
           <div class="flex items-start gap-2">
@@ -142,10 +159,10 @@
       </div>
       <!-- Low Priority Task -->
       <div
-        class="bg-[#FFFFFF] p-4 rounded-lg shadow-sm border-[#E9E9E9] mb-4 relative"
+        class=" p-4 rounded-lg shadow-sm border border-[#E9E9E9] mb-4 relative"
       >
         <div
-          class="absolute top-[15px] bottom-[15px] right-0 w-[4px] bg-[#11A483] rounded-l-full"
+          class="absolute top-[15px] bottom-[15px] right-0 w-[4px] bg-sea-green rounded-l-full"
         ></div>
 
         <div class="flex items-start justify-between">
@@ -183,33 +200,40 @@
     </div>
 
     <!-- Completed Tasks -->
-    <div class="px-4">
+    <section class="px-4">
       <div class="font-semibold mb-2">تسک‌های انجام شده</div>
       <div class="text-sm text-gray-500 mb-4">۳ تسک را باید انجام دهید.</div>
-
-      <!-- Completed Task -->
+        <div
+        class=" relative border h-[66px] rounded-lg p-4 mb-3 flex justify-between items-center">
+            <div class="w-1 h-[42px] absolute right-0 bg-sunset-yellow rounded-l-[8px]"></div>
+            <input type="checkbox" checked class="form-checkbox text-blue-500" />
+            <span class="text-sm font-semibold">خرید میوه و سبزیجات و لبنیات برای خانه</span>
+            <img 
+                src="./assets/images/mobile/light/dropDown.png" 
+                alt="dropdown"
+            />
+        </div>
       <div
-        class="bg-white border rounded-lg p-4 mb-3 flex justify-between items-center"
-      >
-        <span class="text-sm">خرید میوه و سبزیجات و لبنیات برای خانه</span>
+        class=" relative border h-[66px] rounded-lg p-4 mb-3 flex justify-between items-center">
+        <div class="w-1 h-[42px] absolute right-0 bg-vivid-orange-red rounded-l-[8px]"></div>
         <input type="checkbox" checked class="form-checkbox text-blue-500" />
+        <span class="text-sm font-semibold">تماس با میل فروششی در مورد خاخور</span>
+        <img 
+                src="./assets/images/mobile/light/dropDown.png" 
+                alt="dropdown"
+        />
       </div>
-
       <div
-        class="bg-white border rounded-lg p-4 mb-3 flex justify-between items-center"
-      >
-        <span class="text-sm">تماس با میل فروششی در مورد خاخور</span>
+        class=" relative border h-[66px] rounded-lg p-4 mb-3 flex justify-between items-center">
+        <div class="w-1 h-[42px] absolute right-0 bg-sea-green rounded-l-[8px]"></div>
         <input type="checkbox" checked class="form-checkbox text-blue-500" />
-      </div>
-
-      <div
-        class="bg-white border rounded-lg p-4 mb-10 flex justify-between items-center"
-      >
-        <span class="text-sm"
-          >جلسه با مرتضی در مورد مصاحبه با کارآموز ادیب پتل</span
-        >
-        <input type="checkbox" checked class="form-checkbox text-blue-500" />
-      </div>
-    </div>
+        <span class="font-semibold text-sm"
+          >جلسه با مرتضی در مورد مصاحبه با کارآموز ادیب پتل</span>
+        <img 
+          src="./assets/images/mobile/light/dropDown.png" 
+          alt="dropdown"
+        />
+      </div> 
+    </section>
   </body>
 </html>
