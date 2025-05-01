@@ -1,4 +1,6 @@
-header #hamburger-menu.expand {
+/* !hamburger-menu */
+
+header #hamburger-container.expand {
     right: 0;
-    
 }
+
