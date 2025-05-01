@@ -9,7 +9,6 @@ const taskCompleted = document.getElementById("task-compeleted");
 const verticalLine = document.getElementById("vertical-line");
 hamburgerIcon.addEventListener("click", () => {
     hamburgerMenu.classList.add("expand");
-    hamburgerMenu.style.display = "block";
     body.style.backgroundColor = "gray";
     profile.style.display = "none";
     taskContainer.style.display = "none";
@@ -19,7 +18,6 @@ hamburgerIcon.addEventListener("click", () => {
 
 closeIcon.addEventListener("click", () => {
     hamburgerMenu.classList.remove("expand");
-    hamburgerMenu.style.display = "none";
     body.style.backgroundColor = "#fff";
     profile.style.display = "flex";
     taskContainer.style.display = "block";
