@@ -14,9 +14,13 @@
                         'soft-black': '0 0 58.5px 0 #0000000F'
                     },
                     colors: {
+                        "primary": "#007BFF",
+                        "medium-dark-gray": "#525252",
+                        "dark-btn-color": "#F7F7F7",
                         "vivid-orange-red": "#FF5F37",
                         "sunset-yellow": "#FFAF37",
-                        "sea-green": "#11A483"
+                        "sea-green": "#11A483",
+                        "light-blue": "#F5FAFF"
                     }
                 }
             }
@@ -34,9 +38,9 @@
         id="hamburger-icon"
         />
     </header>
-    <div id="hamburger-menu" class="absolute top-0 right-[-300px] w-3/4 h-screen transition duration-500 bg-white sm:hidden">
+    <div id="hamburger-menu" class="absolute top-0 right-[-300px] w-3/4 min-h-screen transition duration-500 bg-white hidden sm:hidden">
       <div id="menu-title" class="mt-4 mx-4 h-12 flex justify-between items-center">
-        <h1 class="font-bold text-[16px]">کوئرا لیست</h1>
+        <h1 class="font-bold pr-3 text-[16px]">کوئرا لیست</h1>
         <img 
           src="./assets/images/mobile/light/x.svg" 
           alt="close" 
@@ -44,15 +48,85 @@
           />
       </div>
       <!-- TODO -->
-      
+      <aside id="side-bar">
+        <ul class="mx-4 mt-8">
+          <li class="flex items-center gap-4 pr-5 mb-6 bg-light-blue rounded-lg py-3">
+            <img 
+              src="./assets/images/mobile/light/home.svg" 
+              alt="home" />
+            <a href="./index.html" class="text-primary">خانه</a>
+          </li>
+          <li class="flex gap-4 pr-5 py-3 mb-6">
+            <img 
+              src="./assets/images/mobile/light/task-square.svg" 
+              alt="task" />
+            <a href="#" class="text-medium-dark-gray">تسک‌ها</a>
+          </li>
+          <li class="flex gap-4 pr-5 py-3 mb-6">
+            <img 
+              src="./assets/images/mobile/light/calendar.svg" 
+              alt="calendar" />
+            <a href="#" class="text-medium-dark-gray">تقویم</a>
+          </li>
+          <li class="flex gap-4 pr-5 py-3 mb-6">
+            <img 
+              src="./assets/images/mobile/light/report.svg" 
+              alt="report" />
+            <a href="#" class="text-medium-dark-gray">گزارشات</a>
+          </li>
+          <li class="flex gap-4 pr-5 py-3 mb-6">
+            <img 
+              src="./assets/images/mobile/light/setting.svg" 
+              alt="setting" />
+            <a href="#" class="text-medium-dark-gray">تنظیمات</a>
+          </li>
+          <li class="flex gap-4 pr-5 py-3 mb-6">
+            <img 
+              src="./assets/images/mobile/light/24-support.svg" 
+              alt="support" />
+            <a href="#" class="text-medium-dark-gray">پشتیبانی</a>
+          </li>
+          <li class="flex gap-4 pr-5 py-3 mb-6">
+            <img 
+              src="./assets/images/mobile/light/profile.svg" 
+              alt="profile" />
+            <a href="#" class="text-medium-dark-gray">پروفایل</a>
+          </li>
+        </ul>
+        <div id="darl-mode" class="mx-[32.5px] mt-[139px] flex flex-col justify-center gap-6">
+          <section class="flex gap-1 justify-center bg-dark-btn-color rounded-md">
+            <button id="light" class="flex my-1 ml- justify-center items-center gap-3 bg-white rounded-md px-7 py-2">
+              <img 
+                src="./assets/images/mobile/light/sun.svg" 
+                alt="light" />
+              <p>روشن</p>
+            </button>
+            <button id="dark" class="flex justify-center items-center gap-3 px-6 py-2">
+              <img 
+                src="./assets/images/mobile/light/moon.svg" 
+                alt="dark" />
+              <p class="text-[#808080]">تاریک</p>
+            </button>
+          </section>
+          <img 
+          src="./assets/images/mobile/light/horizontal.svg" 
+          alt="horizontal" 
+          />
+        </div>
+        <div id="exit" class="flex items-center gap-4 h-9 mt-6 mb-8 mr-[38px]">
+          <img 
+            src="./assets/images/mobile/light/logout.svg" alt="log-out">
+            <p class="text-medium-dark-gray">خروج</p>
+        </div>
+      </aside>
     </div>
     <br />
     <!-- !Profile section -->
 
     <section id="profile-container" class="px-4 my-7 mr-4 flex items-center gap-3">
       <img
-        src="./assets/images/mobile/light/profile.png"
-        alt="Profile"
+        src="./assets/images/mobile/light/personal-img.svg"
+        alt="personal-img"
         class="w-10 h-10 rounded-full object-cover"
       />
       <div class="flex flex-col">
@@ -118,7 +192,7 @@
           <!-- Dropdown icon -->
           <div class="cursor-pointer">
             <img
-              src="./assets/images/mobile/light/dropDown.png"
+              src="./assets/images/mobile/light/dropdown.svg"
               alt="dropdown"
             />
           </div>
@@ -159,7 +233,7 @@
           <!-- Dropdown icon -->
           <div class="cursor-pointer">
             <img
-              src="./assets/images/mobile/light/dropDown.png"
+              src="./assets/images/mobile/light/dropdown.svg"
               alt="dropdown"
             />
           </div>
@@ -199,7 +273,7 @@
           <!-- Dropdown icon -->
           <div class="cursor-pointer">
             <img
-              src="./assets/images/mobile/light/dropDown.png"
+              src="./assets/images/mobile/light/dropdown.svg"
               alt="dropdown"
             />
           </div>
@@ -217,7 +291,7 @@
             <input type="checkbox" checked class="form-checkbox text-blue-500" />
             <span class="text-sm font-semibold">خرید میوه و سبزیجات و لبنیات برای خانه</span>
             <img 
-                src="./assets/images/mobile/light/dropDown.png" 
+                src="./assets/images/mobile/light/dropdown.svg" 
                 alt="dropdown"
             />
         </div>
@@ -227,7 +301,7 @@
         <input type="checkbox" checked class="form-checkbox text-blue-500" />
         <span class="text-sm font-semibold">تماس با میل فروششی در مورد خاخور</span>
         <img 
-                src="./assets/images/mobile/light/dropDown.png" 
+                src="./assets/images/mobile/light/dropdown.svg" 
                 alt="dropdown"
         />
       </div>
@@ -238,7 +312,7 @@
         <span class="font-semibold text-sm"
           >جلسه با مرتضی در مورد مصاحبه با کارآموز ادیب پتل</span>
         <img 
-          src="./assets/images/mobile/light/dropDown.png" 
+          src="./assets/images/mobile/light/dropdown.svg" 
           alt="dropdown"
         />
       </div> 
