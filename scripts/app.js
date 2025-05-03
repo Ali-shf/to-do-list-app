@@ -26,3 +26,12 @@ closeIcon.addEventListener("click", () => {
     taskCompleted.style.display = "block";
     verticalLine.style.display = "block";
 })
+
+// !dark-mode
+
+const darkBtn = document.getElementById("dark");
+const darkMode = function () {
+    document.documentElement.classList.toggle("dark");
+}
+
+darkBtn.addEventListener("click", darkMode);

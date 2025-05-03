@@ -8,19 +8,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+          darkMode: "class",
+          content: ["./*.html"],
             theme: {
                 extend: {
                     boxShadow: {
                         'soft-black': '0 0 58.5px 0 #0000000F'
                     },
                     colors: {
-                        "primary": "#007BFF",
-                        "medium-dark-gray": "#525252",
-                        "dark-btn-color": "#F7F7F7",
-                        "vivid-orange-red": "#FF5F37",
-                        "sunset-yellow": "#FFAF37",
-                        "sea-green": "#11A483",
-                        "light-blue": "#F5FAFF"
+                        light: {
+                          "primary": "#2C7EF8",
+                          "primary-hover-light": "#075CD9",
+                          "medium-dark-gray": "#525252",
+                          "dark-btn-color": "#F7F7F7",
+                          "vivid-orange-red": "#FF5F37",
+                          "sunset-yellow": "#FFAF37",
+                          "sea-green": "#11A483",
+                          "light-blue": "#F5FAFF"
+                        },
+                        dark: {
+                          "primary": "#3A86F8",
+                          "primary-hover-Dark": "#6BA4FA",
+                        }
                     }
                 }
             }
@@ -38,7 +47,7 @@
         id="hamburger-icon"
         />
     </header>
-    <div id="hamburger-menu" class="absolute top-0 right-[-300px] w-3/4 min-h-screen transition duration-500 bg-white hidden sm:hidden">
+    <div id="hamburger-menu" class="absolute top-0 right-[-300px] w-3/4 transition duration-500 bg-white hidden sm:hidden">
       <div id="menu-title" class="mt-4 mx-4 h-12 flex justify-between items-center">
         <h1 class="font-bold pr-3 text-[16px]">کوئرا لیست</h1>
         <img 
@@ -95,13 +104,13 @@
         </ul>
         <div id="darl-mode" class="mx-[32.5px] mt-[139px] flex flex-col justify-center gap-6">
           <section class="flex gap-1 justify-center bg-dark-btn-color rounded-md">
-            <button id="light" class="flex my-1 ml- justify-center items-center gap-3 bg-white rounded-md px-7 py-2">
+            <button id="light" class="flex my-1 cursor-pointer justify-center items-center gap-3 bg-white rounded-md px-7 py-2">
               <img 
                 src="./assets/images/mobile/light/sun.svg" 
                 alt="light" />
               <p>روشن</p>
             </button>
-            <button id="dark" class="flex justify-center items-center gap-3 px-6 py-2">
+            <button id="dark" class="flex justify-center items-center cursor-pointer gap-3 px-6 py-2">
               <img 
                 src="./assets/images/mobile/light/moon.svg" 
                 alt="dark" />
@@ -113,7 +122,7 @@
           alt="horizontal" 
           />
         </div>
-        <div id="exit" class="flex items-center gap-4 h-9 mt-6 mb-8 mr-[38px]">
+        <div id="exit" class="flex items-center gap-4 h-9 mt-6 mb-[35px] mr-[38px]">
           <img 
             src="./assets/images/mobile/light/logout.svg" alt="log-out">
             <p class="text-medium-dark-gray">خروج</p>
