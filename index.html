@@ -16,7 +16,6 @@
                         'soft-black': '0 0 58.5px 0 #0000000F'
                     },
                     colors: {
-                        light: {
                           "primary": "#2C7EF8",
                           "primary-hover-light": "#075CD9",
                           "medium-dark-gray": "#525252",
@@ -24,11 +23,11 @@
                           "vivid-orange-red": "#FF5F37",
                           "sunset-yellow": "#FFAF37",
                           "sea-green": "#11A483",
-                          "light-blue": "#F5FAFF"
-                        },
+                          "ice-blue": "#F5FAFF",
                         dark: {
                           "primary": "#3A86F8",
                           "primary-hover-Dark": "#6BA4FA",
+                          "header-bgc": "#091120",
                         }
                     }
                 }
@@ -39,7 +38,7 @@
   <body class="font-sans">
     <!-- !Header section -->
     <header class="h-12 shadow-soft-black rounded-lg relative mt-4 mx-4 flex items-center justify-center sm:hidden">
-      <h1 class="font-bold text-[16px] text-center">کوئرا لیست</h1>
+      <h1 class="font-bold text-[16px] text-center dark:bg-header-bgc">کوئرا لیست</h1>
       <img 
         src="./assets/images/mobile/light/menu.svg" 
         alt="menu"
@@ -47,85 +46,88 @@
         id="hamburger-icon"
         />
     </header>
-    <div id="hamburger-menu" class="absolute top-0 right-[-300px] w-3/4 transition duration-500 bg-white hidden sm:hidden">
+    <div id="hamburger-menu" class="absolute top-0 right-[-300px] w-3/4 transition duration-500 bg-white hidden sm:hidden dark:bg-dark-header-bgc">
       <div id="menu-title" class="mt-4 mx-4 h-12 flex justify-between items-center">
-        <h1 class="font-bold pr-3 text-[16px]">کوئرا لیست</h1>
+        <h1 class="font-bold pr-3 text-[16px] dark:text-white">کوئرا لیست</h1>
         <img 
           src="./assets/images/mobile/light/x.svg" 
           alt="close" 
-          class=""
+          class="dark:text-white"
+          id="close"
           />
       </div>
       <!-- TODO -->
       <aside id="side-bar">
         <ul class="mx-4 mt-8">
-          <li class="flex items-center gap-4 pr-5 mb-6 bg-light-blue rounded-lg py-3">
+          <li class="flex items-center gap-4 pr-5 mb-6 bg-ice-blue rounded-lg py-3 dark:bg-[#041933]">
             <img 
               src="./assets/images/mobile/light/home.svg" 
-              alt="home" />
-            <a href="./index.html" class="text-primary">خانه</a>
+              alt="home" 
+              class="home"
+              />
+            <a href="./index.html" class="text-primary-hover-light dark:text-white">خانه</a>
           </li>
           <li class="flex gap-4 pr-5 py-3 mb-6">
             <img 
               src="./assets/images/mobile/light/task-square.svg" 
               alt="task" />
-            <a href="#" class="text-medium-dark-gray">تسک‌ها</a>
+            <a href="#" class="text-medium-dark-gray dark:text-white">تسک‌ها</a>
           </li>
           <li class="flex gap-4 pr-5 py-3 mb-6">
             <img 
               src="./assets/images/mobile/light/calendar.svg" 
               alt="calendar" />
-            <a href="#" class="text-medium-dark-gray">تقویم</a>
+            <a href="#" class="text-medium-dark-gray dark:text-white">تقویم</a>
           </li>
           <li class="flex gap-4 pr-5 py-3 mb-6">
             <img 
               src="./assets/images/mobile/light/report.svg" 
               alt="report" />
-            <a href="#" class="text-medium-dark-gray">گزارشات</a>
+            <a href="#" class="text-medium-dark-gray dark:text-white">گزارشات</a>
           </li>
           <li class="flex gap-4 pr-5 py-3 mb-6">
             <img 
               src="./assets/images/mobile/light/setting.svg" 
               alt="setting" />
-            <a href="#" class="text-medium-dark-gray">تنظیمات</a>
+            <a href="#" class="text-medium-dark-gray dark:text-white">تنظیمات</a>
           </li>
           <li class="flex gap-4 pr-5 py-3 mb-6">
             <img 
               src="./assets/images/mobile/light/24-support.svg" 
               alt="support" />
-            <a href="#" class="text-medium-dark-gray">پشتیبانی</a>
+            <a href="#" class="text-medium-dark-gray dark:text-white">پشتیبانی</a>
           </li>
           <li class="flex gap-4 pr-5 py-3 mb-6">
             <img 
               src="./assets/images/mobile/light/profile.svg" 
               alt="profile" />
-            <a href="#" class="text-medium-dark-gray">پروفایل</a>
+            <a href="#" class="text-medium-dark-gray dark:text-white">پروفایل</a>
           </li>
         </ul>
-        <div id="darl-mode" class="mx-[32.5px] mt-[139px] flex flex-col justify-center gap-6">
-          <section class="flex gap-1 justify-center bg-dark-btn-color rounded-md">
-            <button id="light" class="flex my-1 cursor-pointer justify-center items-center gap-3 bg-white rounded-md px-7 py-2">
+        <footer id="menu-footer" class="flex flex-col gap-6 items-center">
+          <section id="toggle" class="mt-[139px] mx-auto flex gap-1 justify-around items-center">
+            <div id="toggle-light" class="flex items-center gap-3">
               <img 
-                src="./assets/images/mobile/light/sun.svg" 
-                alt="light" />
-              <p>روشن</p>
-            </button>
-            <button id="dark" class="flex justify-center items-center cursor-pointer gap-3 px-6 py-2">
+              src="./assets/images/mobile/light/sun.svg" 
+              alt="light" />
+              <span class="text-[#525252] dark:text-[#7A7A7A]">روشن</span>
+            </div>
+            <div id="toggle-dark" class="toggle-dark flex items-center gap-3">
               <img 
                 src="./assets/images/mobile/light/moon.svg" 
                 alt="dark" />
-              <p class="text-[#808080]">تاریک</p>
-            </button>
+              <span class="text-[#808080] dark:text-white">تاریک</span>
+            </div>
           </section>
-          <img 
-          src="./assets/images/mobile/light/horizontal.svg" 
-          alt="horizontal" 
-          />
-        </div>
-        <div id="exit" class="flex items-center gap-4 h-9 mt-6 mb-[35px] mr-[38px]">
-          <img 
-            src="./assets/images/mobile/light/logout.svg" alt="log-out">
-            <p class="text-medium-dark-gray">خروج</p>
+          <img
+            src="./assets/images/mobile/light/horizontal.svg" 
+            alt="horizontal"
+            />
+          <div id="log-out" class="flex gap-4 self-start mr-[60px] mb-8">
+            <img 
+              src="./assets/images/mobile/light/logout.svg" alt="log-out">
+            <p class="light-text-medium-dark-gray dark:text-white">خروج</p>
+        </footer>
         </div>
       </aside>
     </div>
@@ -188,7 +190,7 @@
                 >جلسه با مدیران پروژه</span
               >
               <span
-                class="text-xs bg-[#FFE2DB] text-[#FF5F37] px-2 py-0.5 rounded-[4px] inline-block mt-3 w-fit"
+                class="text-xs bg-[#FFE2DB] text-vivid-orange-red px-2 py-0.5 rounded-[4px] inline-block mt-3 w-fit"
               >
                 بالا
               </span>
@@ -229,7 +231,7 @@
                 >خرید میوه و سبزیجات و لبنیات برای خانه</span
               >
               <span
-                class="text-xs bg-[#FFEFD6] text-[#FFAF37] px-2 py-0.5 rounded-[4px] inline-block mt-3 w-fit"
+                class="text-xs bg-[#FFEFD6] text-sunset-yellow px-2 py-0.5 rounded-[4px] inline-block mt-3 w-fit"
               >
                 متوسط
               </span>
@@ -269,7 +271,7 @@
                 >تماس با جمشید</span
               >
               <span
-                class="text-xs bg-[#C3FFF1] text-[#11A483] px-2 py-0.5 rounded-[4px] inline-block mt-3 w-fit"
+                class="text-xs bg-[#C3FFF1] text-sea-green px-2 py-0.5 rounded-[4px] inline-block mt-3 w-fit"
               >
                 پایین
               </span>
