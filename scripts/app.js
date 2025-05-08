@@ -106,3 +106,32 @@ toggleLight.addEventListener("click", () => {
   document.documentElement.classList.remove("dark");
   localStorage.setItem("theme", "light");
 });
+
+
+
+const ProfilePlaceholder = document.createComment('profile-placeholder');
+profile.parentNode.insertBefore(ProfilePlaceholder, profile.nextSibling);
+
+function moveProfile() {
+    if(window.matchMedia('(min-width: 1280px)').matches) {
+
+        // Desktop: move profile into top of hamburgerMenu
+        if(!hamburgerMenu.contains(profile)) {
+            hamburgerMenu.insertBefore(profile, hamburgerMenu.firstChild);
+
+            // hamburgerMenu.style.height = 'auto';
+        }
+    }else {
+        if(ProfilePlaceholder && !ProfilePlaceholder.contains(profile)) {
+            ProfilePlaceholder.appendChild(profile); 
+
+            // hamburgerMenu.style.height = '';
+        }
+    }
+}
+
+moveProfile();
+
+window.addEventListener('resize',moveProfile);
+window.addEventListener('DOMContentLoaded', moveProfile);
+
