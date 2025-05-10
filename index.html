@@ -177,192 +177,79 @@
           </span>
         </div>
       </section>
-      <div class="h-px bg-[#F5F6F8] mx-4 my-4 xl:hidden" id="vertical-line dark:hidden"></div>
+      <div class="h-px bg-[#F5F6F8] mx-4 my-4 xl:hidden dark:hidden" id="vertical-line"></div>
 
       <br />
-      <!-- !Today Tasks -->
+      <!-- !task-section -->
       <section class="px-4" id="task-container">
         <div class="mb-2 font-bold text-base leading-[100%] text-[#242424] dark:text-dark-txt-clr xl:font-extrabold xl:text-xl">
           تسک‌های امروز
         </div>
-        <div class="text-xs text-[#696969] mb-4 dark:text-dark-gray-txt-clr xl:font-extrabold">۳ تسک را باید انجام دهید.</div>
+        
 
         <!-- New Task Button -->
+        
         <button
           class="w-full whitespace-nowrap border border-dashed border-[#CCCCCC] text-[#007BFF] py-4 pr-4 pl-64 rounded-[10px] font-semibold text-sm mb-4 
           dark:bg-dark-header-bgc dark:text-[#57A8FF] dark:border-[#203E62]
-          xl:font-bold xl:text-base xl:flex xl:justify-start"
+          xl:font-bold xl:text-base xl:flex xl:justify-start cursor-pointer"
+          id="start-task-btn"
         >
           + افزودن وظیفه جدید
         </button>
-
-        <!-- Task Items -->
-        <!-- High Priority Task -->
-        <div class=" p-4 rounded-lg border border-[#E9E9E9] mb-4 relative 
-                    dark:bg-dark-header-bgc dark:border-none">
-
-          <div class="absolute top-[15px] bottom-[15px] right-0 w-[4px] bg-vivid-orange-red rounded-l-full"></div>
-
-          <div class="flex items-start justify-between ">
-            <div class="flex items-start gap-4 xl:align-middle">
-              <!-- Checkbox -->
-              <input
-                type="checkbox"
-                class="w-4 h-4 mt-1 border-[#CCCCCC] rounded-[5px] accent-[#FFE2DB]"
-              />
-
-              <div class="flex flex-col">
-
-                <div class="flex flex-col xl:flex-row xl:gap-3">
-                  <span class="font-semibold text-sm leading-[100%] tracking-normal dark:text-dark-txt-clr"
-                  >جلسه با مدیران پروژه</span>
-                  <span
-                    class="text-xs bg-[#FFE2DB] text-vivid-orange-red px-2 py-0.5 rounded-[4px] inline-block mt-3 w-fit 
-                    dark:bg-dark-high-prio dark:text-dark-txt-high-prio dark:border-0
-                    xl:mt-0"
-                  >
-                    بالا
-                  </span>
-                </div>     
-                <div class="text-[#7D7D7F] text-xs font-normal mt-4 dark:text-dark-gray-txt-clr">
-                  جلسه با محسن یگانه و مریم جلالی
-                </div>
-              </div>
+        <form id="task-form">
+          <div class="flex flex-col gap-6 pr-6 pt-4 pb-6">
+            <div class="flex flex-col gap-2">
+              <input type="text" name="task-title" required placeholder="نام تسک" />
+              <input type="text" name="task-desc" required placeholder="توضیحات" />
             </div>
-
-            <!-- Dropdown icon -->
-            <div class="cursor-pointer">
-              <img
-                src="./assets/images/mobile/light/dropdown.svg"
-                alt="dropdown"
-                />
+            <div id="task-tag" class="flex flex-col gap-6">
+              <button class="cursor-pointer flex items-center gap-1 border border-[#E9E9E9] w-[74px] h-[30px] rounded-[4px] py-[1px] pr-1">
+                <img 
+                  src="./assets/images/desktop/light/tag-right.svg" 
+                  alt="task" />
+              <span class="text-[#AFAEB2]">تگ ها</span>
+              </button>
+              <ul id="task-tags">
+              <div id="tag-bottom" class="bg-[#C3FFF1] text-[#11A483] text-[12px] font-semibold h-[23px] w-[31px] flex justify-center items-center p-2 rounded-[4px]">
+                پایین
+              </div>
+              <div class="border border-[#EBEDEF]"></div>
+              <div id="tag-mid" class="bg-[#FFEFD6] text-[#FFAF37] text-[12px] font-semibold h-[23px] w-[54px] flex justify-center items-center p-2 rounded-[4px]">
+                متوسط
+              </div>
+              <div class="border border-[#EBEDEF]"></div>
+              <div id="tag-top" class="bg-[#FFE2DB] text-vivid-orange-red text-[12px] font-semibold h-[23px] w-[31px] justify-center flex items-center p-2 rounded-[4px]">
+                بالا
+              </div>
+            </ul>
             </div>
           </div>
+        <div class="border border-[#E9E9E9]"></div>
+        <div class="addTaskBtn">
+          <button class="cursor-pointer">اضافه کردن تسک</button>
         </div>
-        <!-- Mid Priority Task -->
-        <div
-          class="shadow-soft-black  p-4 rounded-lg shadow-sm border border-[#E9E9E9] mb-4 relative dark:bg-dark-header-bgc dark:border-none"
-        >
-        <div
-              class="absolute top-[15px] bottom-[15px] right-0 w-[4px] bg-sunset-yellow rounded-l-full"
-        >
-        </div>
+        </form>
 
-          <div class="flex items-start justify-between">
-            <div class="flex items-start gap-4">
-              <!-- Checkbox -->
-              <input
-                type="checkbox"
-                class="w-4 h-4 mt-1 border-[#CCCCCC] rounded-[5px] accent-[#FFEFD6] dark:bg-dark-header-bgc"
-              />
-
-              <div class="flex flex-col">
-                <div class="flex flex-col xl:flex-row xl:gap-3">
-                  <span class="font-semibold text-sm leading-[100%] tracking-normal dark:text-dark-txt-clr"
-                  >خرید میوه و سبزیجات و لبنیات برای خانه</span
-                  >
-                  <span
-                    class="text-xs bg-[#FFEFD6] text-sunset-yellow px-2 py-0.5 rounded-[4px] inline-block mt-3 w-fit 
-                    dark:bg-dark-mid-prio dark:text-dark-txt-mid-prio
-                    xl:mt-0">
-                    متوسط
-                  </span>
-                </div>
-                <div class="text-[#7D7D7F] text-xs font-normal mt-4 dark:text-dark-gray-txt-clr">
-                  سوپرمارکت یاران دریایی
-                </div>
-              </div>
-            </div>
-
-            <!-- Dropdown icon -->
-            <div class="cursor-pointer">
-              <img
-                src="./assets/images/mobile/light/dropdown.svg"
-                alt="dropdown"
-              />
-            </div>
-          </div>
-        </div>
-        <!-- Low Priority Task -->
-        <div
-          class=" p-4 rounded-lg shadow-sm border border-[#E9E9E9] mb-4 relative dark:bg-dark-header-bgc dark:border-none">
-          <div
-            class="absolute top-[15px] bottom-[15px] right-0 w-[4px] bg-sea-green rounded-l-full"
-          ></div>
-
-          <div class="flex items-start justify-between">
-            <div class="flex items-start gap-2">
-              <!-- Checkbox -->
-              <input
-                type="checkbox"
-                class="w-4 h-4 mt-1 border-[#CCCCCC] rounded-[5px] accent-[#C3FFF1]"
-              />
-
-              <div class="flex flex-col">
-                <div class="flex flex-col xl:flex-row xl:gap-3">
-                  <span class="font-semibold text-sm leading-[100%] tracking-normal dark:text-dark-txt-clr"
-                  >تماس با جمشید</span
-                  >
-                  <span
-                    class="text-xs bg-[#C3FFF1] text-sea-green px-2 py-0.5 rounded-[4px] inline-block mt-3 w-fit 
-                          dark:bg-dark-low-prio dark:text-dark-txt-low-prio
-                          xl:mt-0"
-                  >
-                    پایین
-                  </span>
-                </div>
-                <div class="text-[#7D7D7F] text-xs font-normal mt-4 dark:text-dark-gray-txt-clr">
-                  باید در مورد کارهای باقیمانده از پروژه قبلی صحبت کنیم.
-                </div>
-              </div>
-            </div>
-
-            <!-- Dropdown icon -->
-            <div class="cursor-pointer">
-              <img
-                src="./assets/images/mobile/light/dropdown.svg"
-                alt="dropdown"
-              />
-            </div>
-          </div>
-        </div>
+        <!-- Task lists-->
+        <ul id="task-list">
+          <li>
+            
+          </li>
+        </ul>
+        
       </section>
-
+      <!-- !start-putting your task -->
+      <div class="flex flex-col justify-center items-center gap-6" id="start-task">
+          <img src="./assets/images/desktop/light/task.svg" alt="task" />
+          <div class="text-center">
+            <p class="text-[#7D7D7F] font-extrabold mb-1">چه کارهایی امروز برای انجام داری؟</p>
+            <p class="text-[#AFAEB2]">میتونی الان تسک‌هاتو اینجا بنویسی و برنامه ریزی رو شروع کنی!</p>
+          </div>
+      </div>
       <!-- !Completed Tasks -->
       <section class="px-4 " id="task-compeleted">
-        <div class="font-semibold mb-2 dark:text-dark-txt-clr xl:font-extrabold xl:text-xl">تسک‌های انجام شده</div>
-        <div class="text-sm text-gray-500 mb-4 dark:text-dark-gray-txt-clr xl:font-extrabold">۳ تسک را باید انجام دهید.</div>
-          <div
-          class=" relative border border-[#E9E9E9] h-[66px] rounded-lg p-4 mb-3 flex justify-between items-center dark:bg-dark-header-bgc dark:border-none">
-              <div class="w-1 h-[42px] absolute right-0 bg-sunset-yellow rounded-l-[8px] "></div>
-              <input type="checkbox" checked class="form-checkbox text-blue-500" />
-              <span class="text-sm font-semibold dark:text-dark-txt-clr">خرید میوه و سبزیجات و لبنیات برای خانه</span>
-              <img 
-                  src="./assets/images/mobile/light/dropdown.svg" 
-                  alt="dropdown"
-              />
-          </div>
-        <div
-          class=" relative border border-[#E9E9E9] h-[66px] rounded-lg p-4 mb-3 flex justify-between items-center dark:bg-dark-header-bgc dark:border-none">
-          <div class="w-1 h-[42px] absolute right-0 bg-vivid-orange-red rounded-l-[8px]"></div>
-          <input type="checkbox" checked class="form-checkbox text-blue-500" />
-          <span class="text-sm font-semibold dark:text-dark-txt-clr">تماس با میل فروششی در مورد تاخیر در ارسال</span>
-          <img 
-                  src="./assets/images/mobile/light/dropdown.svg" 
-                  alt="dropdown"
-          />
-        </div>
-        <div
-          class=" relative border border-[#E9E9E9] h-[66px] rounded-lg p-4 mb-3 flex justify-between items-center dark:bg-dark-header-bgc dark:border-none">
-          <div class="w-1 h-[42px] absolute right-0 bg-sea-green rounded-l-[8px]"></div>
-          <input type="checkbox" checked class="form-checkbox text-blue-500" />
-          <span class="font-semibold text-sm dark:text-dark-txt-clr"
-            >جلسه با مرتضی در مورد مصاحبه با کارآموز ادمین پتل</span>
-          <img 
-            src="./assets/images/mobile/light/dropdown.svg" 
-            alt="dropdown"
-          />
-        </div> 
+
       </section>
     </div>
     <script type="module" src="./scripts/app.js"></script>
