@@ -196,7 +196,7 @@ addTaskForm.addEventListener("submit", (e) => {
         <button class="flex items-center w-6 h-6 text-left px-2 py-1 hover:bg-gray-100 edit-btn">
           <img 
             src="./assets/images/mobile/light/tabler_edit.svg" alt="dropdown" 
-            class="cursor-pointer"
+            class=" cursor-pointer"
           />
         </button>
       </div>  
@@ -247,10 +247,46 @@ else {
 
   // Edit functionality
   dropdownMenu.querySelector(".edit-btn").addEventListener("click", () => {
-    inputTitle.value = listItem.querySelector(".task-title").textContent.trim();
-    inputDesc.value = listItem.querySelector(".task-desc").textContent.trim();
-    addTaskForm.style.display = "flex";
-    listItem.remove(); // remove old version, to be replaced by edited version
+    const titleSpan = listItem.querySelector(".task-check span");
+    const descSpan = listItem.querySelector(".span-desc span");
+
+    // Create a new form element
+    const form = document.createElement("form");
+    form.className = "edit-form flex flex-col gap-2 mt-4";
+
+    form.innerHTML = `
+      <input 
+        type="text" 
+        class="border border-gray-300 px-2 py-1 rounded task-title-input" 
+        value="${titleSpan?.textContent.trim() || ''}" 
+        required 
+      />
+      <textarea 
+        class="border border-gray-300 px-2 py-1 rounded task-desc-input" 
+        rows="2"
+        required
+      >${descSpan?.textContent.trim() || ''}</textarea>
+      <button type="submit" class="bg-blue-500 text-white rounded px-3 py-1 self-start">
+        ذخیره
+      </button>
+    `;
+
+    // Insert the form after the task
+    listItem.insertAdjacentElement("afterend", form);
+
+    // Handle form submission
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const newTitle = form.querySelector(".task-title-input").value.trim();
+      const newDesc = form.querySelector(".task-desc-input").value.trim();
+
+      // Update task
+      titleSpan.textContent = newTitle;
+      descSpan.textContent = newDesc;
+
+      // Remove the form
+      form.remove();
+    });
   });
 
 
