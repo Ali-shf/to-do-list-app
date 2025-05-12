@@ -167,7 +167,7 @@ addTaskForm.addEventListener("submit", (e) => {
   listItem.classList.add("task", "relative");
 
   listItem.innerHTML = `
-    <div class="absolute top-[15px] bottom-[15px] right-0 w-[4px] rounded-l-full" id="vertical-line"></div>
+    <div class="absolute top-[15px] bottom-[15px] right-0 w-[4px] h-[79px] rounded-l-full" id="vertical-line"></div>
     <div class="wrapper flex flex-col gap-[10px] py-4 pr-5 border border-[#E9E9E9] rounded-[12px] mt-4">
       <div class="task-check flex gap-3">
         <input type="checkbox" />
@@ -205,6 +205,18 @@ addTaskForm.addEventListener("submit", (e) => {
 
   if (selectedTag) {
 
+   
+    const checkbox = listItem.querySelector(".task-check input");
+    checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      taskCompleted.querySelector(".done-task").style.display = "block";
+      taskCompleted.appendChild(listItem);
+    } else {
+      taskCompleted.querySelector(".done-task").style.display = "none";
+  }
+});
+
+
     if (selectedTag.id === "tag-top") listItem.classList.add("priority-1");
     if (selectedTag.id === "tag-mid") listItem.classList.add("priority-2");
     if (selectedTag.id === "tag-bottom") listItem.classList.add("priority-3");
@@ -216,10 +228,6 @@ addTaskForm.addEventListener("submit", (e) => {
     const computedColor = window.getComputedStyle(tagClone).color;
     listItem.querySelector("#vertical-line").style.backgroundColor = computedColor;
   });
-}
-
-else {
-  listItem.classList.add("priority-4");
 }
 
 
@@ -240,12 +248,12 @@ else {
     // }
   });
 
-  // Delete functionality
+  // Delete 
   dropdownMenu.querySelector(".delete-btn").addEventListener("click", () => {
     listItem.remove();
   });
 
-  // Edit functionality
+  // Edit
   dropdownMenu.querySelector(".edit-btn").addEventListener("click", () => {
     const titleSpan = listItem.querySelector(".task-check span");
     const descSpan = listItem.querySelector(".span-desc span");
@@ -310,7 +318,6 @@ else {
       if (element.classList.contains("priority-1")) return 1;
       if (element.classList.contains("priority-2")) return 2;
       if (element.classList.contains("priority-3")) return 3;
-      return 4;
     };
     return getPriority(a) - getPriority(b);
   });
