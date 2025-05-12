@@ -177,10 +177,30 @@ addTaskForm.addEventListener("submit", (e) => {
         <span class="text-[#727272] text-[14px]">${descValue}</span>
       </div>
     </div>
-    <img 
-      src="./assets/images/desktop/light/dropdown.svg" alt="dropdown" 
-      class="absolute top-6 left-6 cursor-pointer"
-    />
+    <div class="dropdown">
+      <button class="dropdown-btn">
+        <img 
+          src="./assets/images/desktop/light/dropdown.svg" alt="dropdown" 
+          class="absolute top-6 left-6 cursor-pointer"
+        />
+      </button>
+      <div id="myDropdown" class="dropdown-menu hidden flex flex-col gap-2 w-20 h-9 absolute top-8 left-0 bg-white border rounded z-10 text-sm
+        shadow-[0_20px_24px_rgba(20,20,25,0.06)]">
+        <button class="flex items-center w-6 h-6 text-left px-2 py-1 hover:bg-red-100 delete-btn">
+          <img 
+            src="./assets/images/mobile/light/tabler_trash-x.svg" alt="dropdown" 
+            class="cursor-pointer"
+          />
+        </button>
+        <div class="border border-[#EBEDEF] w-5 rotate-90"></div>
+        <button class="flex items-center w-6 h-6 text-left px-2 py-1 hover:bg-gray-100 edit-btn">
+          <img 
+            src="./assets/images/mobile/light/tabler_edit.svg" alt="dropdown" 
+            class="cursor-pointer"
+          />
+        </button>
+      </div>  
+    </div>
   `;
 
   if (selectedTag) {
@@ -204,6 +224,35 @@ else {
 
 
   taskList.appendChild(listItem);
+
+
+  // Toggle dropdown menu
+  const dropdownBtn = listItem.querySelector(".dropdown-btn");
+  const dropdownMenu = listItem.querySelector(".dropdown-menu");
+
+  dropdownBtn.addEventListener("click", () => {
+    dropdownMenu.classList.toggle("hidden");
+
+    // if (!dropdownMenu.classList.contains("hidden")) {
+    //   dropdownMenu.classList.add("flex-col","gap-2");
+    // } else {
+    //   dropdownMenu.classList.remove("flex-col","gap-2");
+    // }
+  });
+
+  // Delete functionality
+  dropdownMenu.querySelector(".delete-btn").addEventListener("click", () => {
+    listItem.remove();
+  });
+
+  // Edit functionality
+  dropdownMenu.querySelector(".edit-btn").addEventListener("click", () => {
+    inputTitle.value = listItem.querySelector(".task-title").textContent.trim();
+    inputDesc.value = listItem.querySelector(".task-desc").textContent.trim();
+    addTaskForm.style.display = "flex";
+    listItem.remove(); // remove old version, to be replaced by edited version
+  });
+
 
   const tasks = [...taskList.children];
   
