@@ -184,14 +184,15 @@
       <!-- !task-section -->
       <section class="px-4" id="task-container">
         <div class="mb-2 font-bold text-base leading-[100%] text-[#242424] dark:text-dark-txt-clr xl:font-extrabold xl:text-xl">
-          تسک‌های امروز
+          <p>تسک های امروز</p>
+          <div id="task-counter" class="pt-4 text-[#696969] font-extrabold text-[14px]"></div>
         </div>
         
 
         <!-- New Task Button -->
         
         <button
-          class="w-full whitespace-nowrap border border-dashed border-[#CCCCCC] text-[#007BFF] py-4 pr-4 pl-64 rounded-[10px] font-semibold text-sm mb-4 
+          class="w-full whitespace-nowrap border border-dashed border-[#CCCCCC] text-[#007BFF] py-4 pr-4 pl-64 rounded-[10px] font-semibold text-sm mt-5 mb-4 
           dark:bg-dark-header-bgc dark:text-[#57A8FF] dark:border-[#203E62]
           xl:font-bold xl:text-base xl:flex xl:justify-start cursor-pointer"
           id="start-task-btn"
@@ -199,7 +200,7 @@
           + افزودن وظیفه جدید
         </button>
         <form id="task-form">
-          <div class="flex flex-col gap-6 pr-6 pt-4 pb-6">
+          <div class="flex flex-col gap-6 pr-6 pt-4 pb-6" id="first">
             <div class="flex flex-col gap-2">
               <input type="text" name="task-title" required placeholder="نام تسک" />
               <input type="text" name="task-desc" required placeholder="توضیحات" />
@@ -212,17 +213,17 @@
                 <span class="text-[#AFAEB2]">تگ ها</span>
               </button>
               <ul id="task-tags">
-                <div id="tag-bottom" class="cursor-pointer bg-[#C3FFF1] text-[#11A483] text-[12px] font-semibold h-[23px] w-[31px] flex justify-center items-center p-2 rounded-[4px]">
+                <div id="tag-bottom" class="bg-[#C3FFF1] text-[#11A483] text-[12px] font-semibold h-[23px] w-[31px] flex justify-center items-center p-2 rounded-[4px]">
                   پایین
                 </div>
                 <div class="border border-[#EBEDEF]"></div>
-                <div id="tag-mid" class="cursor-pointer bg-[#FFEFD6] text-[#FFAF37] text-[12px] font-semibold h-[23px] w-[54px] flex justify-center items-center p-2 rounded-[4px]">
+                <div id="tag-mid" class="bg-[#FFEFD6] text-[#FFAF37] text-[12px] font-semibold h-[23px] w-[54px] flex justify-center items-center p-2 rounded-[4px]">
                   متوسط
                 </div>
                 <div class="border border-[#EBEDEF]"></div>
-                <div id="tag-top" class="cursor-pointer bg-[#FFE2DB] text-vivid-orange-red text-[12px] font-semibold h-[23px] w-[31px] justify-center flex items-center p-2 rounded-[4px]">
+                <div id="tag-top" class="bg-[#FFE2DB] text-vivid-orange-red text-[12px] font-semibold h-[23px] w-[31px] justify-center flex items-center p-2 rounded-[4px]">
                   بالا
-                </div>
+              </div>
               </ul>
             </div>
           </div>
@@ -234,9 +235,7 @@
 
         <!-- Task lists-->
         <ul id="task-list">
-          <li>
-            
-          </li>
+          
         </ul>
         
       </section>

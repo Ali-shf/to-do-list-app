@@ -109,60 +109,125 @@ toggleLight.addEventListener("click", () => {
 
 // !Task-manager
 
+const taskCounter = document.getElementById("task-counter");
 const startTask = document.getElementById("start-task");
 const startTaskBtn = document.getElementById("start-task-btn");
 const addTaskForm = document.getElementById("task-form");
-const taskTagBtn = document.querySelector("#task-form #task-tag");
+const taskTagBtn = document.querySelector("#task-tag button");
 const taskTags = document.getElementById("task-tags");
 let inputTitle = document.querySelector("input[name='task-title']");
 let inputDesc = document.querySelector("input[name='task-desc']");
 const taskList = document.getElementById("task-list");
 
 
-function addTask(e) {
+let selectedTag = null;
+let counter = 0;
+
+
+taskCounter.innerText = "تسکی برای امروز نداری";
+
+
+startTaskBtn.addEventListener("click", () => {
+  addTaskForm.style.display = "block";
   startTask.style.display = "none";
-  addTaskForm.style.display  = "block";
-  let clickedTag;
-  taskTagBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    taskTags.style.display = "flex";
-    clickedTag = e.target.closest("#tag-top, #tag-mid, #tag-bottom"); 
-    if(!clickedTag) return  
-    taskTagBtn.innerHTML = "";
-    taskTagBtn.appendChild(clickedTag);
-  });
+});
+
+
+taskTagBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  taskTags.style.display = "flex";
+});
+
+
+taskTags.addEventListener("click", (e) => {
+  const tag = e.target.closest("#tag-top, #tag-mid, #tag-bottom");
+  if (!tag) return;
+
   
+  selectedTag = tag.cloneNode(true);
+
   
-  addTaskForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    addTaskForm.style.display = "none";
-    const titleValue = inputTitle.value;
-    const descValue = inputTitle.value;
-    const listItem = document.createElement("li");
-    listItem.classList.add("task");
-    listItem.classList.add("relative");
-    taskList.appendChild(listItem);
-    listItem.innerHTML = `
+  taskTagBtn.innerHTML = "";
+  taskTagBtn.appendChild(selectedTag);
+  taskTags.style.display = "none";
+});
+
+
+addTaskForm.addEventListener("submit", (e) => {
+  counter += 1;
+  taskCounter.innerText =  `${counter} تسک را باید انجام دهید.`;
+  
+  e.preventDefault();
+  addTaskForm.style.display = "none";
+
+  const titleValue = inputTitle.value;
+  const descValue = inputDesc.value;
+
+  const listItem = document.createElement("li");
+  listItem.classList.add("task", "relative");
+
+  listItem.innerHTML = `
     <div class="absolute top-[15px] bottom-[15px] right-0 w-[4px] rounded-l-full" id="vertical-line"></div>
-      <div class="wrapper flex flex-col gap-[10px] py-4 pr-5 border border-[#E9E9E9] rounded-[12px] mt-4">
-        <div class="task-check flex gap-3">
-          <input type="checkbox" />
-          <span class="text-[#242424] font-bold">${titleValue}</span>
-        </div>
-        <div class="span-desc">
-          <span class="text-[#727272] text-[14px]">${descValue}</span>
-        </div>
+    <div class="wrapper flex flex-col gap-[10px] py-4 pr-5 border border-[#E9E9E9] rounded-[12px] mt-4">
+      <div class="task-check flex gap-3">
+        <input type="checkbox" />
+        <span class="text-[#242424] font-bold">${titleValue}</span>
       </div>
-      <img 
-        src="./assets/images/desktop/light/dropdown.svg" alt="dropdown" 
-        class="absolute top-6 left-6 cursor-pointer"
-        />
-    `
-    document.querySelector(".task-check").appendChild(clickedTag);
-    document.querySelector(".task #vertical-line").style.backgroundColor = window.getComputedStyle(clickedTag).color;
-    
-  })
+      <div class="span-desc">
+        <span class="text-[#727272] text-[14px]">${descValue}</span>
+      </div>
+    </div>
+    <img 
+      src="./assets/images/desktop/light/dropdown.svg" alt="dropdown" 
+      class="absolute top-6 left-6 cursor-pointer"
+    />
+  `;
+
+  if (selectedTag) {
+
+    if (selectedTag.id === "tag-top") listItem.classList.add("priority-1");
+    if (selectedTag.id === "tag-mid") listItem.classList.add("priority-2");
+    if (selectedTag.id === "tag-bottom") listItem.classList.add("priority-3");
+
+    const tagClone = selectedTag.cloneNode(true);
+    listItem.querySelector(".task-check").appendChild(tagClone);
+
+  requestAnimationFrame(() => {
+    const computedColor = window.getComputedStyle(tagClone).color;
+    listItem.querySelector("#vertical-line").style.backgroundColor = computedColor;
+  });
 }
 
-// Event listener to add a new task and edit, delete a task
-startTaskBtn.addEventListener("click", addTask);
+else {
+  listItem.classList.add("priority-4");
+}
+
+
+  taskList.appendChild(listItem);
+
+  const tasks = [...taskList.children];
+  
+  
+  tasks.sort((a, b) => {
+    const getPriority = (element) => {
+      if (element.classList.contains("priority-1")) return 1;
+      if (element.classList.contains("priority-2")) return 2;
+      if (element.classList.contains("priority-3")) return 3;
+      return 4;
+    };
+    return getPriority(a) - getPriority(b);
+  });
+  tasks.forEach(task => taskList.appendChild(task));
+
+  // Reset inputs and tag
+  inputTitle.value = "";
+  inputDesc.value = "";
+  selectedTag = null;
+  taskTagBtn.innerHTML = `
+    <img src="./assets/images/desktop/light/tag-right.svg" alt="task" />
+    <span class="text-[#AFAEB2]">تگ ها</span>
+  `;
+});
+
+
+
