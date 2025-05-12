@@ -250,28 +250,40 @@ else {
     const titleSpan = listItem.querySelector(".task-check span");
     const descSpan = listItem.querySelector(".span-desc span");
 
+    // Get or assign a unique taskId
+    const taskId = listItem.dataset.taskId || Math.random().toString(36).substr(2, 9);
+    listItem.dataset.taskId = taskId;
+
+    // Prevent creating the form if it already exists
+    if (document.getElementById(`edit-form-${taskId}`)) {
+      return;
+    }
+
     // Create a new form element
     const form = document.createElement("form");
     form.className = "edit-form flex flex-col gap-2 mt-4";
+    form.id = `edit-form-${taskId}`; // Unique form ID
 
     form.innerHTML = `
-      <input 
-        type="text" 
-        class="border border-gray-300 px-2 py-1 rounded task-title-input" 
-        value="${titleSpan?.textContent.trim() || ''}" 
-        required 
-      />
-      <textarea 
-        class="border border-gray-300 px-2 py-1 rounded task-desc-input" 
-        rows="2"
-        required
-      >${descSpan?.textContent.trim() || ''}</textarea>
-      <button type="submit" class="bg-blue-500 text-white rounded px-3 py-1 self-start">
-        ذخیره
-      </button>
+      <div class="absolute top-[15px] bottom-[15px] right-0 w-[4px] rounded-l-full" id="vertical-line"></div>
+      <div class="wrapper flex flex-col gap-[10px] py-4 pr-5 border border-[#E9E9E9] rounded-[12px] mt-4">
+        <div class="task-check flex gap-3">
+          <input type="text" class="task-title-input border border-gray-300 px-2 py-1 rounded" required value="${titleSpan?.textContent.trim() || ''}" />
+        </div>
+        <div class="span-desc">
+          <textarea class="task-desc-input border border-gray-300 px-2 py-1 rounded" row="2" required>${descSpan?.textContent.trim() || ''}</textarea>
+        </div>
+        <button type="submit" class="bg-blue-500 text-white rounded px-3 py-1 self-start">
+          ذخیره
+        </button>
+      </div>
     `;
 
-    // Insert the form after the task
+    if (document.getElementById(`edit-form-${taskId}`)) {
+      return; // Prevent creating another form
+    }
+
+    // Insert the form after the list item
     listItem.insertAdjacentElement("afterend", form);
 
     // Handle form submission
@@ -280,7 +292,7 @@ else {
       const newTitle = form.querySelector(".task-title-input").value.trim();
       const newDesc = form.querySelector(".task-desc-input").value.trim();
 
-      // Update task
+      // Update task content
       titleSpan.textContent = newTitle;
       descSpan.textContent = newDesc;
 
